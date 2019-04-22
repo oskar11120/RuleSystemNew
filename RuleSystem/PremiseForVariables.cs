@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    public class PremiseForVariables<T> : Premise
+    public class PremiseForVariables<TVariable,T> : Premise where TVariable: Variable<T>
     {
-        public PremiseForVariables(Variable<T> var1, Sign sign, Variable<T> var2)
+        public PremiseForVariables(TVariable var1, Sign sign, TVariable var2)
         {
             this.var1 = var1;
             this.var2 = var2;
             this.sign = sign;
         }
 
-        private Variable<T> var1;
-        private Variable<T> var2;
+        private TVariable var1;
+        private TVariable var2;
         private readonly Sign sign;
 
         public override bool? Verify()

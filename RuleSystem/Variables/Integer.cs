@@ -8,14 +8,22 @@ namespace RuleSystem
 {
     public class Integer : Variable<int?>
     {
-        public Integer(string name, int? value = null) : base(value, name)
+        public Integer(string name, int? value = null) : base(name)
         {
-
+            this.Value = value;
         }
 
+        public override int? GetValue()
+        {
+            return this.Value;
+        }
+        public override void SetValue(int? Value)
+        {
+            this.Value = Value;
+        }
         public override string ToString()
         {
-            return this.Value.HasValue ? Value.ToString() : "<<unnknown>>";
+            return this.GetValue().ToString();
         }
     }
 }

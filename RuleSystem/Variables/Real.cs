@@ -8,14 +8,22 @@ namespace RuleSystem
 {
     public class Real : Variable<decimal?>
     {
-        public Real(string name, decimal? value = null) : base(value, name)
+        public Real(string name, decimal? value = null) : base(name)
         {
-
+            this.Value = value;
         }
 
+        public override decimal? GetValue()
+        {
+            return this.Value;
+        }
+        public override void SetValue(decimal? Value)
+        {
+            this.Value = Value;
+        }
         public override string ToString()
         {
-            return this.Value.HasValue ? Value.ToString() : "<<unnknown>>";
+            return this.GetValue().ToString();
         }
     }
 }

@@ -8,16 +8,15 @@ namespace RuleSystem
 {
     public abstract class Variable<T>
     {
-        protected Variable(T value, string name)
+        protected Variable(string name)
         {
-            this.Value = value;
             this.Name = name;
         }
-
-
-        public T Value;
+       
         public string Name;
+        protected T Value;
 
-        public abstract override string ToString();
+        public abstract T GetValue();
+        public abstract void SetValue(T Value);        
     }
 }

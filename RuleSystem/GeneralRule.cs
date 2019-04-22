@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    class RuleSystem
+    public abstract class GeneralRule
     {
-        //pola
-        //private List<Dictionary<string,Rule> ruleSet;
+        public abstract void Follow();
     }
 }

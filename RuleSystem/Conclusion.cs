@@ -6,8 +6,26 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    abstract class Conclusion
+    public class Conclusion<TVariable,T> where TVariable: Variable<T>
     {
-        public abstract void Follow();
+        public Conclusion(TVariable variable, TVariable value)
+        {
+            this.variable = variable;
+            this.value = value;
+        }
+
+        //pola
+        private TVariable variable;
+        private TVariable value;
+        
+        //metody
+        public void Follow()
+        {
+            variable.SetValue(value.GetValue());
+        }
+        public override string ToString()
+        {
+            return variable.Name;
+        }
     }
 }

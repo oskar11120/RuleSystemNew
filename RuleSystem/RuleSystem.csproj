@@ -42,12 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conclusion.cs" />
-    <Compile Include="ConclusionForVariables.cs" />
+    <Compile Include="GeneralRule.cs" />
     <Compile Include="Rule.cs" />
+    <Compile Include="RulePack.cs" />
     <Compile Include="Variables\Enums.cs" />
     <Compile Include="Premise.cs" />
     <Compile Include="PremiseForVariables.cs" />
-    <Compile Include="RuleSystem.cs" />
     <Compile Include="Variables\Boolean.cs" />
     <Compile Include="Variables\Enum.cs" />
     <Compile Include="Variables\Integer.cs" />

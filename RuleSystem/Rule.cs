@@ -6,25 +6,34 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    class Rule
+    public class Rule<TVariable,T> : GeneralRule where TVariable: Variable<T> 
     {
-        public Rule(List<Premise> premises, Conclusion conclusion)
+        private Rule(Conclusion<TVariable, T> conclusion, Dictionary<string, List<GeneralRule>> RuleLists)
         {
-            this.premises = premises;
             this.conclusion = conclusion;
+            if (this.RuleList is null)
+            {
+                RuleList = new List<GeneralRule>();
+                RuleLists.Add(conclusion.ToString(), RuleList);
+            }
+            RuleList.Add(this);
         }
-        public Rule(Premise premise, Conclusion conclusion)
+        public Rule(List<Premise> premises, Conclusion<TVariable,T> conclusion, Dictionary<string, List<GeneralRule>> RuleLists) : this(conclusion, RuleLists)
         {
-            this.premises.Add(premise);
-            this.conclusion = conclusion;
+            this.premises = premises;         
+        }
+        public Rule(Premise premise, Conclusion<TVariable, T> conclusion, Dictionary<string, List<GeneralRule>> RuleLists) : this(conclusion, RuleLists)
+        {
+            this.premises.Add(premise);           
         }
 
-        private List<Premise> premises;
-        private Conclusion conclusion;
+        private List<Premise> premises = new List<Premise>();
+        private Conclusion<TVariable,T> conclusion;
         private bool IsInspected = false;
         private bool isTrue;
+        private List<GeneralRule> RuleList;
 
-        public void Follow()
+        public override void Follow()
         {
             isTrue = true;
             foreach (Premise premise in premises)
