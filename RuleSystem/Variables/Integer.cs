@@ -21,9 +21,5 @@ namespace RuleSystem
         {
             this.Value = Value;
         }
-        public override string ToString()
-        {
-            return this.GetValue().ToString();
-        }
     }
 }

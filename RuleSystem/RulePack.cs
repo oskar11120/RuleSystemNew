@@ -23,9 +23,10 @@ namespace RuleSystem
 
             Rule<RuleSystem.Boolean, bool?> rule = new Rule<RuleSystem.Boolean, bool?>(premise, conclusion, RuleLists);
 
-            Console.WriteLine(czyTomaszStarszy.GetValue());
-            rule.Follow();
-            Console.WriteLine(czyTomaszStarszy.GetValue());
+            Console.WriteLine(czyTomaszStarszy);
+            //rule.Follow();
+            czyTomaszStarszy.FindValue(RuleLists);
+            Console.WriteLine(czyTomaszStarszy);
         }
         
         private Dictionary<string, List<GeneralRule>> RuleLists = new Dictionary<string, List<GeneralRule>>();

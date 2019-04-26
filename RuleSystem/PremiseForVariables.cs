@@ -19,9 +19,12 @@ namespace RuleSystem
         private TVariable var2;
         private readonly Sign sign;
 
-        public override bool? Verify()
+        public override bool? Verify(Dictionary<string,List<GeneralRule>> RuleLists)
         {
-            if(var1 is null || var2 is null) throw new NotImplementedException();
+            if (var1 is null) var1.FindValue(RuleLists);
+            if (var2 is null) var2.FindValue(RuleLists);
+
+            if (var1 is null || var2 is null) throw new CouldNotFindValueException();
             else
             {
                 switch (sign)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    public class Boolean : Variable<bool?>
+    public class Boolean : Variable<bool?> 
     {
         public Boolean(string name, bool? value = null) : base(name)
         {
@@ -20,10 +20,6 @@ namespace RuleSystem
         public override void SetValue(bool? Value)
         {
             this.Value = Value;
-        }
-        public override string ToString()
-        {
-            return this.GetValue().ToString();
         }
     }
 }

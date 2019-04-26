@@ -29,9 +29,5 @@ namespace RuleSystem
         {
             return this.index is null ? null : PossibleValues[(int)index];
         }
-        public override string ToString()
-        {
-            return this.GetValue().ToString();
-        }
     }
 }
