@@ -25,7 +25,7 @@ namespace RuleSystem
             {
                 //nie wiem co sie dzieje jesli RuleLists jest pusta
                 rule.Follow();
-                if (!(this.Value as object is null)) return;
+                if (!(this.Value as object is null)) return;               
             }
         }
         public override string ToString()

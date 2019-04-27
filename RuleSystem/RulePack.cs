@@ -19,7 +19,7 @@ namespace RuleSystem
 
             //reguly
             PremiseForVariables<Real, decimal?> premise = new PremiseForVariables<Real, decimal?>(wiek, Sign.biggerThan, wiek2);
-            Conclusion<RuleSystem.Boolean, bool?> conclusion = new Conclusion<RuleSystem.Boolean, bool?>(czyTomaszStarszy, new RuleSystem.Boolean("asdas", true));
+            var conclusion = new Conclusion<Boolean, bool?>(czyTomaszStarszy, new Boolean("asdas", true));
 
             Rule<RuleSystem.Boolean, bool?> rule = new Rule<RuleSystem.Boolean, bool?>(premise, conclusion, RuleLists);
 
