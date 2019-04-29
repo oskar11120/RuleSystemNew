@@ -10,7 +10,7 @@ namespace RuleSystem
     {
         public Real(string name, decimal? value = null) : base(name)
         {
-            this.Value = value;
+            SetValue(value);
         }
 
         public override decimal? GetValue()
@@ -20,6 +20,12 @@ namespace RuleSystem
         public override void SetValue(decimal? Value)
         {
             this.Value = Value;
+            IsNull = this.Value is null;
+        }
+        public override void SetValue(Variable variable)
+        {
+            this.Value = (variable as Real).Value;
+            IsNull = this.Value is null;
         }
     }
 }

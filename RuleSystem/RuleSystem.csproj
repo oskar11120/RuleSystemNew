@@ -41,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conclusion.cs" />
-    <Compile Include="CouldNotFindValueException.cs" />
-    <Compile Include="GeneralRule.cs" />
-    <Compile Include="Rule.cs" />
+    <Compile Include="Logic\Conclusion.cs" />
+    <Compile Include="Logic\ConclusionForValue.cs" />
+    <Compile Include="Logic\ConclusionForVariables.cs" />
+    <Compile Include="Logic\CouldNotFindValueException.cs" />
+    <Compile Include="Logic\Rule.cs" />
+    <Compile Include="NotAllowedValueForEnumException.cs" />
+    <Compile Include="Logic\PremiseForValue.cs" />
+    <Compile Include="Logic\Premise.cs" />
     <Compile Include="RulePack.cs" />
+    <Compile Include="UnexpectedValueException.cs" />
     <Compile Include="Variables\Enums.cs" />
-    <Compile Include="Premise.cs" />
-    <Compile Include="PremiseForVariables.cs" />
+    <Compile Include="Logic\PremiseForVariables.cs" />
     <Compile Include="Variables\Boolean.cs" />
     <Compile Include="Variables\Enum.cs" />
     <Compile Include="Variables\Integer.cs" />

@@ -13,23 +13,31 @@ namespace RuleSystem
         {
             //zmienne asdasd 
             Real wiek = new Real("WiekTomasza", 12);
-            Real wiek2 = new Real("WiekStefana", 11);
-            RuleSystem.Boolean czyTomaszStarszy = new RuleSystem.Boolean("czyTomaszJestStarszy");
-            RuleSystem.Enum @enum = new RuleSystem.Enum(new List<string> { "a", "b", "c" }, "papa", 1);
+            Real wiek2 = new Real("WiekStefana", 10);
+            Boolean czyTomaszStarszy = new Boolean("czyTomaszJestStarszy");
+            Enum @enum = new Enum(new List<string> { "a", "b", "c" }, "papa", "a");
+
+            var czyStefanMlodszy = new Boolean("czyStefanMlodszy");
 
             //reguly
-            PremiseForVariables<Real, decimal?> premise = new PremiseForVariables<Real, decimal?>(wiek, Sign.biggerThan, wiek2);
-            var conclusion = new Conclusion<Boolean, bool?>(czyTomaszStarszy, new Boolean("asdas", true));
+            PremiseForVariables premise = new PremiseForVariables(wiek, Sign.biggerThan, wiek2);
+            var premiseForValue = new PremiseForValue<string>(@enum, Sign.eqal, "a");
 
-            Rule<RuleSystem.Boolean, bool?> rule = new Rule<RuleSystem.Boolean, bool?>(premise, conclusion, RuleLists);
 
-            Console.WriteLine(czyTomaszStarszy);
-            //rule.Follow();
-            czyTomaszStarszy.FindValue(RuleLists);
-            Console.WriteLine(czyTomaszStarszy);
+            var conclusion = new ConclusionForVariables(czyTomaszStarszy, new Boolean("asdas", true));
+            
+            Rule rule = new Rule(new List<Premise> { premise, premiseForValue }, conclusion, RuleLists);
+            Rule rule2 = new Rule(new PremiseForVariables(czyTomaszStarszy, Sign.eqal, new Boolean("asdas", true)), new ConclusionForValue<bool?>(czyStefanMlodszy, true), RuleLists);
+            //Console.WriteLine(rule.IsTrue());
+            //Console.WriteLine(czyTomaszStarszy);
+            //czyTomaszStarszy.FindValue(RuleLists);
+            //Console.WriteLine(czyTomaszStarszy);
+            czyStefanMlodszy.FindValue(RuleLists);
+            Console.WriteLine(czyStefanMlodszy);
+            
         }
         
-        private Dictionary<string, List<GeneralRule>> RuleLists = new Dictionary<string, List<GeneralRule>>();
+        private Dictionary<string, List<Rule>> RuleLists = new Dictionary<string, List<Rule>>();
 
     }
 }

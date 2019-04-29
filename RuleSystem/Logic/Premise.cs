@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    public enum Sign
+    public abstract class Premise
     {
-        eqal,
-        notEqal,
-        biggerThan,
-        smallerThan,
-        biggerOrEven,
-        smallerOrEven
+        public abstract bool? Verify(Dictionary<string, List<Rule>> RuleLists);
     }
 }

@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    public class Conclusion<TVariable,T> where TVariable: Variable<T>
+    class ConclusionForValue<T> : Conclusion
     {
-        public Conclusion(TVariable variable, TVariable value)
+        public ConclusionForValue(Variable variable, T value)
         {
             this.variable = variable;
             this.value = value;
         }
 
         //pola
-        private TVariable variable;
-        private TVariable value;
-        
+        private Variable variable;
+        private T value;
+
         //metody
-        public void Follow()
+        public override void Follow()
         {
-            variable.SetValue(value.GetValue());
+           ( variable as Variable<T>).SetValue(value);
         }
         public override string ToString()
         {

@@ -10,7 +10,7 @@ namespace RuleSystem
     {
         public Boolean(string name, bool? value = null) : base(name)
         {
-            this.Value = value;
+            SetValue(value);
         }
 
         public override bool? GetValue()
@@ -20,6 +20,14 @@ namespace RuleSystem
         public override void SetValue(bool? Value)
         {
             this.Value = Value;
+            IsNull = this.Value is null;
+        }
+
+        public override void SetValue(Variable variable)
+        {
+            this.Value = (variable as Boolean).Value;
+            if(this.Value is null) this.IsNull = true;
+            IsNull = this.Value is null;
         }
     }
 }

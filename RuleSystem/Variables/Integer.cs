@@ -10,7 +10,7 @@ namespace RuleSystem
     {
         public Integer(string name, int? value = null) : base(name)
         {
-            this.Value = value;
+            SetValue(value);
         }
 
         public override int? GetValue()
@@ -20,6 +20,12 @@ namespace RuleSystem
         public override void SetValue(int? Value)
         {
             this.Value = Value;
+            IsNull = this.Value is null;
+        }
+        public override void SetValue(Variable variable)
+        {
+            this.Value = (variable as Integer).Value;
+            IsNull = this.Value is null;
         }
     }
 }

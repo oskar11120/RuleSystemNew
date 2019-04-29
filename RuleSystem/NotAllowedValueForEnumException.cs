@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    public abstract class GeneralRule
+    class NotAllowedValueForEnumException : Exception
     {
-        public abstract void Follow();
     }
 }

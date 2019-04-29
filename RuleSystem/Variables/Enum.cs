@@ -8,26 +8,31 @@ namespace RuleSystem
 {
     public class Enum : Variable<string>
     {
-        public Enum(List<string> possibleValues, string name, int? index = null) : base(name)
+        public Enum(List<string> possibleValues, string name, string value) : base(name)
         {
-            this.PossibleValues = possibleValues;
-            this.index = index;
+            this.possibleValues = possibleValues;
+            SetValue(value);
         }
 
-        private readonly List<string> PossibleValues;
-        public int? index;
+        private readonly List<string> possibleValues;
 
-        public override void SetValue(string Value)
+        public override void SetValue(string value)
         {
-            // do zmiany
-            for (int i = 0; i < PossibleValues.Count(); i++)
+            if (possibleValues.Any(allowed => allowed.Equals(value)))
             {
-                if (this.Value == Value) this.index = i;
+                this.Value = value;
+                IsNull = this.Value is null;
             }
+            else throw new NotAllowedValueForEnumException();
+        }
+        public override void SetValue(Variable variable)
+        {
+            this.SetValue((variable as Enum).Value);
+            IsNull = this.Value is null;
         }
         public override string GetValue()
         {
-            return this.index is null ? null : PossibleValues[(int)index];
+            return this.Value;
         }
     }
 }

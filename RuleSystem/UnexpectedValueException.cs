@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace RuleSystem
 {
-    public enum Sign
+    class UnexpectedValueException : Exception
     {
-        eqal,
-        notEqal,
-        biggerThan,
-        smallerThan,
-        biggerOrEven,
-        smallerOrEven
     }
 }
